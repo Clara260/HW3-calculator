@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <center>
+    <title>Calculator</title>
+  </center>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>  
+  <center>
+  <p id="title"> Calculator </p>
+  <div class="calc_background">
+  
+      <form name="form1">
+
+        <input id="bar" type="text" name="answer"> <br> <br>
+
+        <input class="option" type="button" value="DEG" onclick="backspc()">
+        <input class="option" type="button" value="x!" onclick="fact()">
+        <input class="option" type="button" value="(">
+        <input class="option" type="button" value=")">
+        <input class="option" type="button" value="%">
+        <input class="option" type="button" value="AC" onclick="form1.answer.value = ' ' ">
+        </br>
+
+        <input class="option" type="button" value="sin" onclick="sin()">
+        <input class="option" type="button" value="ln" onclick="ln()">
+        <input class="number" type="button" value="7" onclick="form1.answer.value += '7' ">
+        <input class="number" type="button" value="8" onclick="form1.answer.value += '8' ">
+        <input class="number" type="button" value="9" onclick="form1.answer.value += '9' ">
+        <input class="option" type="button" value="÷" onclick="form1.answer.value += '/' ">
+        <br>
+
+        <input class="option" type="button" value="cos" onclick="cos()">
+        <input class="option" type="button" value="log" onclick="log()">
+        <input class="number" type="button" value="4" onclick="form1.answer.value += '4' ">
+        <input class="number" type="button" value="5" onclick="form1.answer.value += '5' ">
+        <input class="number" type="button" value="6" onclick="form1.answer.value += '6' ">
+        <input class="option" type="button" value="x" onclick="form1.answer.value += '*' ">
+        <br>
+
+        <input class="option" type="button" value="tan" onclick="tan()">
+        <input class="option" type="button" value="√" onclick="sqrt()">
+        <input class="number" type="button" value="1" onclick="form1.answer.value += '1' ">
+        <input class="number" type="button" value="2" onclick="form1.answer.value += '2' ">
+        <input class="number" type="button" value="3" onclick="form1.answer.value += '3' ">
+        <input class="option" type="button" value="-" onclick="form1.answer.value += '-' ">
+        <br>
+
+        <input class="option" type="button" value="EXP" onclick="e()">
+        <button class="option" onclick="pow()">x<sup>y</sup></button>
+        <input class="number" type="button" value="0" onclick="form1.answer.value += '0' ">
+        <input class="number" type="button" value="." onclick="form1.answer.value += '.' ">
+        <input id="equal" type="button" value="=" onclick="form1.answer.value = eval(form1.answer.value)">
+        <input class="option" type="button" value="+" onclick="form1.answer.value += '+' ">
+        <br><br>
+      </form>
+    </center>
+  </div>
+  <p align="right">Clara TEINTURIER</p> 
+</body>
+
+<!-- JAVASCRIPT -->
+<script>
+  var screen = document.querySelector('#screen');
+  var btn = document.querySelectorAll('.btn');
+
+ //Maths functions
+  for (item of btn) 
+  {
+    item.addEventListener('click', (e) => 
+    {
+      btntext = e.target.innerText;
+
+      if (btntext == '×') {
+        btntext = '*';
+      }
+
+      if (btntext == '÷') {
+        btntext = '/';
+      }
+      form1.answer.value += btntext;
+    });
+  }
+
+  function sin() {
+    form1.answer.value = Math.sin(form1.answer.value);
+  }
+
+  function cos() {
+    form1.answer.value = Math.cos(form1.answer.value);
+  }
+
+  function tan() {
+    form1.answer.value = Math.tan(form1.answer.value);
+  }
+
+  function pow() {
+    form1.answer.value = Math.pow(form1.answer.value, 2);
+  }
+
+  function sqrt() {
+    form1.answer.value = Math.sqrt(form1.answer.value, 2);
+  }
+
+  function log() {
+    form1.answer.value = Math.log(form1.answer.value);
+  }
+
+  function ln() {
+    form1.answer.value = Math.ln(form1.answer.value);
+  }
+
+  function e() {
+    form1.answer.value = Math.exp(form1.answer.value);
+  }
+
+  function fact() {
+    var i, num, f;
+    f = 1
+    num = form1.answer.value;
+    for (i = 1; i <= num; i++) {
+      f = f * i;
+    }
+
+    i = i - 1;
+
+    form1.answer.value = f;
+  }
+
+  function backspc() {
+    form1.answer.value = form1.answer.value.substr(0, form1.answer.value.length - 1);
+  }
+</script>
+
+</html>
